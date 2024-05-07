@@ -8,6 +8,7 @@ const createButton = document.querySelector('button[data-create]');
 const destroyButton = document.querySelector('button[data-destroy]');
 const boxesContainer = document.querySelector('#boxes');
 function createBoxes(amount) {
+  const fragment = document.createDocumentFragment();
   boxesContainer.innerHTML = '';
   for (let i = 0; i < amount; i++) {
     const size = 30 + i * 10;
@@ -15,8 +16,9 @@ function createBoxes(amount) {
     div.style.width = `${size}px`;
     div.style.height = `${size}px`;
     div.style.backgroundColor = getRandomHexColor();
-    boxesContainer.appendChild(div);
+    fragment.appendChild(div);
   }
+  boxesContainer.appendChild(fragment);
 }
 
 createButton.addEventListener('click', () => {
